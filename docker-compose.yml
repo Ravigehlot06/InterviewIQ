@@ -1,0 +1,35 @@
+version: "3.9"
+
+# Provides a local PostgreSQL instance for InterviewIQ.
+# The Flask backend and React frontend are run directly with
+# `python run.py` / `npm run dev` (see README.md / PROJECT_GUIDE.md) -
+# this project intentionally does not containerize the whole app to keep
+# the setup simple and easy to explain in a viva.
+#
+# Usage:
+#   docker compose up -d
+#
+# Then set in backend/.env:
+#   DATABASE_URL=postgresql://interviewiq_user:interviewiq_pass@localhost:5432/interviewiq
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: interviewiq_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: interviewiq_user
+      POSTGRES_PASSWORD: interviewiq_pass
+      POSTGRES_DB: interviewiq
+    ports:
+      - "5432:5432"
+    volumes:
+      - interviewiq_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U interviewiq_user -d interviewiq"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  interviewiq_pg_data:
