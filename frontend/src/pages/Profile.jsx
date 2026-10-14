@@ -138,12 +138,12 @@ function AvatarAnimator() {
 function Modal({ isOpen, onClose, title, children }) {
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-card w-full max-w-md rounded-[28px] shadow-2xl p-6 relative animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
-        <button onClick={onClose} className="absolute top-5 right-5 text-ink-faint hover:text-ink transition-colors">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+      <div className="bg-white border border-slate-200 w-full max-w-md rounded-[28px] shadow-2xl p-6 relative max-h-[90vh] overflow-y-auto">
+        <button onClick={onClose} className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 transition-colors">
           <X className="w-5 h-5" />
         </button>
-        <h3 className="font-display text-xl font-bold mb-6 pr-8">{title}</h3>
+        <h3 className="font-display text-xl font-bold mb-6 pr-8 text-slate-900">{title}</h3>
         {children}
       </div>
     </div>

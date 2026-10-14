@@ -19,12 +19,29 @@ from app.models.role import Role
 from app.models.company import Company
 
 ROLES = [
-    ("software-developer", "Software Developer", "General-purpose software engineering roles.", "Code"),
-    ("data-analyst", "Data Analyst", "Data cleaning, analysis, and reporting roles.", "BarChart3"),
-    ("data-scientist", "Data Scientist", "Statistical modeling and applied ML roles.", "Brain"),
-    ("ai-ml-engineer", "AI/ML Engineer", "Applied machine learning and MLOps roles.", "Cpu"),
-    ("web-developer", "Web Developer", "Frontend/backend web development roles.", "Globe"),
-    ("android-developer", "Android Developer", "Native/cross-platform Android roles.", "Smartphone"),
+    # Technical Roles
+    ("software-developer", "Software Developer", "General-purpose software engineering & core problem solving.", "Code"),
+    ("fullstack-developer", "Full Stack Developer", "Modern web apps, full-stack architecture, React & Node/Python.", "Layers"),
+    ("frontend-developer", "Frontend Developer", "Interactive client-side interfaces, responsive UI/UX & performance.", "Layout"),
+    ("backend-developer", "Backend Developer", "Distributed systems, REST/GraphQL APIs, databases & microservices.", "Server"),
+    ("data-analyst", "Data Analyst", "Data cleaning, statistical querying, SQL, and business BI metrics.", "BarChart3"),
+    ("data-scientist", "Data Scientist", "Statistical modeling, predictive algorithms, and applied machine learning.", "Brain"),
+    ("ai-ml-engineer", "AI/ML Engineer", "LLM integrations, neural networks, PyTorch, and production MLOps.", "Cpu"),
+    ("devops-engineer", "DevOps & Cloud Engineer", "CI/CD pipelines, Docker, Kubernetes, AWS/GCP cloud reliability.", "Cloud"),
+    ("mobile-developer", "Mobile App Developer", "Native and cross-platform mobile apps for iOS and Android.", "Smartphone"),
+    ("cybersecurity-analyst", "Cybersecurity Analyst", "Security posture, penetration testing, threat hunting & defense.", "ShieldCheck"),
+    ("qa-engineer", "QA & Test Automation", "Automated test suites, end-to-end testing, and quality assurance.", "CheckCircle2"),
+    ("systems-architect", "Systems Architect", "High-level architectural patterns, distributed scale & resilience.", "Network"),
+
+    # Non-Technical & Business / Product Roles
+    ("product-manager", "Product Manager", "Product vision, user discovery, feature roadmapping & stakeholder alignment.", "Compass"),
+    ("ui-ux-designer", "UI/UX Designer", "User research, Figma wireframing, design systems & interaction design.", "Palette"),
+    ("project-manager", "Project Manager / Scrum Master", "Agile methodologies, sprint execution, resource tracking & delivery.", "Kanban"),
+    ("business-analyst", "Business Analyst", "Business process optimization, requirements gathering & stakeholder sync.", "LineChart"),
+    ("hr-specialist", "HR & Talent Partner", "People operations, talent acquisition, culture & employee relations.", "Users"),
+    ("marketing-specialist", "Marketing & Growth", "Campaign strategies, user acquisition, growth marketing & analytics.", "Megaphone"),
+    ("sales-executive", "Sales & Business Development", "Client discovery, B2B enterprise negotiations, pipeline closing.", "Briefcase"),
+    ("customer-success", "Customer Success Lead", "Client retention, onboarding delight, support workflows & renewals.", "HeartHandshake"),
 ]
 
 COMPANIES = [

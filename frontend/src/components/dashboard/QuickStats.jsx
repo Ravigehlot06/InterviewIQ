@@ -83,7 +83,7 @@ export default function QuickStats({ stats }) {
           <span className="font-display text-xl font-bold tracking-tight text-slate-900 sm:text-2xl truncate max-w-[170px]">
             {readinessLabel}
           </span>
-          {readinessScore > 0 && (
+          {hasInterviews && readinessScore != null && (
             <span className="text-xs font-semibold text-indigo-600">
               (<AnimatedNumber value={readinessScore} suffix="%" />)
             </span>

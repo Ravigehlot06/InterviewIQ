@@ -78,6 +78,14 @@ def predict_readiness(features: dict, model_path: str = DEFAULT_MODEL_PATH):
     readiness_score = (raw_overall + diff_adj) * completion_factor
     readiness_score = max(0.0, min(100.0, readiness_score))
 
+    # Sanity alignment: prevent model outliers from mismatching overall score
+    if raw_overall < 40.0 and label in ["Almost Ready", "Interview Ready"]:
+        label = "Early Stage" if raw_overall < 35.0 else "Needs Practice"
+    elif raw_overall >= 80.0 and label in ["Early Stage", "Needs Practice"]:
+        label = "Interview Ready"
+    elif raw_overall >= 60.0 and label == "Early Stage":
+        label = "Needs Practice" if raw_overall < 65.0 else "Almost Ready"
+
     # Keep readiness_score aligned with the predicted readiness_label boundaries:
     # Early Stage: < 40, Needs Practice: 40-59.9, Almost Ready: 60-79.9, Interview Ready: >= 80
     if label == "Early Stage":
@@ -87,7 +95,7 @@ def predict_readiness(features: dict, model_path: str = DEFAULT_MODEL_PATH):
     elif label == "Almost Ready":
         readiness_score = max(60.0, min(79.9, readiness_score))
     elif label == "Interview Ready":
-        readiness_score = max(80.0, readiness_score)
+        readiness_score = max(80.0, min(100.0, readiness_score))
 
     return label, round(readiness_score, 1), round(confidence, 1)
 

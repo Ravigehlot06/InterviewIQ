@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Award, Sparkles, CheckCircle2 } from "lucide-react";
+import { Award, Sparkles, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ReadinessCard({
-  readinessScore = 82,
-  readinessLabel = "Almost Ready",
+  readinessScore = 0,
+  readinessLabel = "Not Yet Assessed",
   readinessSource = "ml",
 }) {
   const [animatedNumber, setAnimatedNumber] = useState(0);
   const [showStatus, setShowStatus] = useState(false);
 
-  const targetScore = Math.max(0, Math.min(100, Number(readinessScore) || 78));
+  // Parse score safely: preserve 0 without falling back to any dummy number
+  const numericScore = typeof readinessScore === "number" ? readinessScore : Number(readinessScore);
+  const targetScore = Number.isFinite(numericScore) ? Math.max(0, Math.min(100, Math.round(numericScore))) : 0;
 
-  // Circular gauge geometry
+  // Geometry
   const size = 150;
   const strokeWidth = 12;
   const radius = (size - strokeWidth) / 2;
@@ -39,13 +41,77 @@ export default function ReadinessCard({
     return () => cancelAnimationFrame(frameId);
   }, [targetScore]);
 
-  // Insight message based on readiness
-  let insightText = "You're improving consistently. Focus on communication and problem-solving to reach the next level.";
-  if (targetScore >= 80) {
-    insightText = "High interview readiness. Your technical responses and communication benchmarks are consistently competitive.";
-  } else if (targetScore < 60) {
-    insightText = "Foundational stage. Focus on question structure and confidence to accelerate your interview readiness.";
-  }
+  // Determine stage visual styling and actionable diagnostic advice
+  const getTierConfig = (score) => {
+    if (score >= 80) {
+      return {
+        gradId: "readinessGradEmerald",
+        stop1: "#10b981",
+        stop2: "#059669",
+        glow: "#10b981",
+        badgeBg: "bg-emerald-50",
+        badgeText: "text-emerald-700",
+        badgeBorder: "border-emerald-200",
+        iconBg: "bg-emerald-100",
+        iconText: "text-emerald-700",
+        defaultLabel: "Interview Ready",
+        insight:
+          "High interview readiness. Your technical responses and communication benchmarks are consistently competitive for top hiring standards.",
+      };
+    }
+    if (score >= 60) {
+      return {
+        gradId: "readinessGradIndigo",
+        stop1: "#6366f1",
+        stop2: "#7c3aed",
+        glow: "#7c3aed",
+        badgeBg: "bg-indigo-50",
+        badgeText: "text-indigo-700",
+        badgeBorder: "border-indigo-200",
+        iconBg: "bg-indigo-100",
+        iconText: "text-indigo-700",
+        defaultLabel: "Almost Ready",
+        insight:
+          "Competitive stage. Solid performance across competencies. Fine-tune technical depth and delivery pacing to reach top hiring readiness.",
+      };
+    }
+    if (score >= 40) {
+      return {
+        gradId: "readinessGradSky",
+        stop1: "#3b82f6",
+        stop2: "#0284c7",
+        glow: "#0284c7",
+        badgeBg: "bg-blue-50",
+        badgeText: "text-blue-700",
+        badgeBorder: "border-blue-200",
+        iconBg: "bg-blue-100",
+        iconText: "text-blue-700",
+        defaultLabel: "Needs Practice",
+        insight:
+          "Developing stage. Focus on structured STAR framework delivery, answer depth, and communication confidence to transition into interview readiness.",
+      };
+    }
+    // score < 40 (Early Stage)
+    return {
+      gradId: "readinessGradAmber",
+      stop1: "#f59e0b",
+      stop2: "#ea580c",
+      glow: "#ea580c",
+      badgeBg: "bg-amber-50",
+      badgeText: "text-amber-700",
+      badgeBorder: "border-amber-200",
+      iconBg: "bg-amber-100",
+      iconText: "text-amber-700",
+      defaultLabel: "Early Stage",
+      insight:
+        score === 0
+          ? "Complete your mock practice sessions to generate your hiring benchmark readiness score."
+          : "Early preparation stage. Build core fundamentals, practice structured answers, and complete more sessions to build readiness momentum.",
+    };
+  };
+
+  const tier = getTierConfig(targetScore);
+  const displayLabel = readinessLabel && readinessLabel !== "Not Yet Assessed" ? readinessLabel : tier.defaultLabel;
 
   return (
     <div className="card-saas flex flex-col justify-between p-6">
@@ -71,13 +137,12 @@ export default function ReadinessCard({
         <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
           <svg width={size} height={size} className="-rotate-90">
             <defs>
-              <linearGradient id="readinessGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#4f46e5" />
-                <stop offset="50%" stopColor="#7c3aed" />
-                <stop offset="100%" stopColor="#6366f1" />
+              <linearGradient id={tier.gradId} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor={tier.stop1} />
+                <stop offset="100%" stopColor={tier.stop2} />
               </linearGradient>
               <filter id="ringGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#7c3aed" floodOpacity="0.3" />
+                <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor={tier.glow} floodOpacity="0.3" />
               </filter>
             </defs>
 
@@ -97,7 +162,7 @@ export default function ReadinessCard({
               cy={size / 2}
               r={radius}
               fill="none"
-              stroke="url(#readinessGrad)"
+              stroke={`url(#${tier.gradId})`}
               strokeWidth={strokeWidth}
               strokeLinecap="round"
               strokeDasharray={circumference}
@@ -126,9 +191,9 @@ export default function ReadinessCard({
           transition={{ duration: 0.4 }}
           className="mt-3 flex items-center gap-1.5"
         >
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">
+          <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold border ${tier.badgeBg} ${tier.badgeText} ${tier.badgeBorder}`}>
             <Award className="h-3.5 w-3.5" />
-            {readinessLabel}
+            {displayLabel}
           </span>
         </motion.div>
       </div>
@@ -136,11 +201,11 @@ export default function ReadinessCard({
       {/* Supporting diagnostic card */}
       <div className="rounded-2xl border border-slate-100 bg-slate-50/70 p-3.5">
         <div className="flex items-start gap-2.5">
-          <div className="mt-0.5 grid h-5 w-5 flex-shrink-0 place-items-center rounded-full bg-indigo-100 text-indigo-700">
-            <CheckCircle2 className="h-3.5 w-3.5" />
+          <div className={`mt-0.5 grid h-5 w-5 flex-shrink-0 place-items-center rounded-full ${tier.iconBg} ${tier.iconText}`}>
+            {targetScore < 40 ? <AlertCircle className="h-3.5 w-3.5" /> : <CheckCircle2 className="h-3.5 w-3.5" />}
           </div>
           <p className="text-xs leading-relaxed text-slate-600">
-            {insightText}
+            {tier.insight}
           </p>
         </div>
       </div>

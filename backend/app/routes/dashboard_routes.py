@@ -30,18 +30,40 @@ def dashboard():
         recent_improvement = round(completed[0].report.overall_score - completed[1].report.overall_score, 1)
 
     latest_report = completed[0].report if completed else None
+
+    # Calculate candidate benchmark readiness across practice sessions
     readiness_score = 0
-    if latest_report:
-        r_score = latest_report.readiness_score
-        # Guard against legacy stored classifier confidence (e.g. 98-100% on Early Stage / Needs Practice)
-        if r_score is not None:
-            if latest_report.readiness_label == "Early Stage" and r_score >= 60:
-                r_score = min(39.9, latest_report.overall_score)
-            elif latest_report.readiness_label == "Needs Practice" and (r_score >= 80 or r_score < 40):
-                r_score = max(40.0, min(59.9, latest_report.overall_score))
-            readiness_score = round(float(r_score), 1)
+    if completed:
+        rep_readiness = []
+        for i in completed:
+            r = i.report
+            r_val = r.readiness_score
+            if r_val is not None:
+                # Guard against legacy stored classifier confidence (e.g. 98-100% on Early Stage / Needs Practice)
+                if r.readiness_label == "Early Stage" and r_val >= 60:
+                    r_val = min(39.9, r.overall_score)
+                elif r.readiness_label == "Needs Practice" and (r_val >= 80 or r_val < 40):
+                    r_val = max(40.0, min(59.9, r.overall_score))
+                rep_readiness.append(float(r_val))
+            else:
+                rep_readiness.append(float(r.overall_score or 0.0))
+
+        # Weight recent interviews higher while rewarding consistency
+        weights = [0.8 ** idx for idx in range(len(rep_readiness))]
+        weighted_readiness = sum(s * w for s, w in zip(rep_readiness, weights)) / sum(weights)
+        all_time_readiness = sum(rep_readiness) / len(rep_readiness)
+        composite_readiness = 0.6 * weighted_readiness + 0.4 * all_time_readiness
+        readiness_score = max(0.0, min(100.0, round(composite_readiness, 1)))
+
+        # Determine benchmark readiness tier matching the score
+        if readiness_score >= 80.0:
+            latest_readiness = "Interview Ready"
+        elif readiness_score >= 60.0:
+            latest_readiness = "Almost Ready"
+        elif readiness_score >= 40.0:
+            latest_readiness = "Needs Practice"
         else:
-            readiness_score = round(float(latest_report.overall_score), 1)
+            latest_readiness = "Early Stage"
 
     # Calculate practice streak in days
     streak_days = 0

@@ -1,6 +1,6 @@
 import Navbar from "../components/landing/Navbar";
 import Hero from "../components/landing/Hero";
-import HowItWorks from "../components/landing/HowItWorks";
+import ScrollStoryScene from "../components/landing/ScrollStoryScene";
 import Features from "../components/landing/Features";
 import InterviewTypes from "../components/landing/InterviewTypes";
 import Stats from "../components/landing/Stats";
@@ -13,7 +13,7 @@ export default function Landing() {
     <div className="min-h-screen bg-transparent">
       <Navbar />
       <Hero />
-      <HowItWorks />
+      <ScrollStoryScene />
       <Features />
       <InterviewTypes />
       <Stats />
