@@ -69,7 +69,7 @@ const EXPERIENCE_CARDS = [
   {
     value: "fresher",
     label: "Fresher / Entry Level",
-    subtitle: "0 years · Academic & Foundations",
+    subtitle: "0 years · Academic",
     icon: GraduationCap,
     badge: "Foundations",
     description: "Evaluates core computer science concepts, basic data structures, problem-solving potential, and university projects.",
@@ -77,23 +77,23 @@ const EXPERIENCE_CARDS = [
   {
     value: "0-2",
     label: "Junior / Associate",
-    subtitle: "0-2 years · Practical Execution",
+    subtitle: "0-2 years · Hands-On",
     icon: Code,
-    badge: "Hands-On",
+    badge: "Execution",
     description: "Focuses on clean code syntax, practical implementation, debugging, component development, and team collaboration.",
   },
   {
     value: "2-5",
     label: "Mid-Level Professional",
-    subtitle: "2-5 years · Independent Ownership",
+    subtitle: "2-5 years · Independent",
     icon: Layers,
-    badge: "Most Common",
+    badge: "Recommended",
     description: "Evaluates end-to-end feature ownership, database optimization, system trade-offs, testing, and production best practices.",
   },
   {
     value: "5+",
     label: "Senior / Staff Engineer",
-    subtitle: "5+ years · Architecture & Leadership",
+    subtitle: "5+ years · Architecture",
     icon: ShieldCheck,
     badge: "Leadership",
     description: "Deep dive into distributed systems, cross-team architecture, failure resilience, scalability, and technical strategy.",
@@ -104,38 +104,26 @@ const DIFFICULTY_CARDS = [
   {
     value: "easy",
     label: "Easy Difficulty",
-    subtitle: "Gentle Pacing & Fundamental Concepts",
+    subtitle: "Gentle pacing & core concepts",
     badge: "Warm-Up",
-    accentColor: "emerald",
-    gradientClass: "from-emerald-500/20 via-emerald-500/10 to-transparent",
-    borderClass: "hover:border-emerald-500/50",
-    activeClass: "border-emerald-500 bg-emerald-950/40 shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)] ring-2 ring-emerald-500/80",
-    description: "Clear, predictable questions with supportive follow-ups. Perfect for warming up or building confidence before serious tests.",
-    idealFor: "Entry-level candidates and first-time practice sessions",
+    accent: "emerald",
+    description: "Clear, predictable questions with supportive follow-ups. Perfect for warming up or building confidence before high-stakes tests.",
   },
   {
     value: "medium",
     label: "Medium Difficulty",
-    subtitle: "Realistic Industry Hiring Benchmark",
+    subtitle: "Standard industry hiring bar",
     badge: "Recommended",
-    accentColor: "indigo",
-    gradientClass: "from-indigo-500/20 via-indigo-500/10 to-transparent",
-    borderClass: "hover:border-indigo-500/50",
-    activeClass: "border-indigo-500 bg-indigo-950/40 shadow-[0_0_30px_-5px_rgba(99,102,241,0.3)] ring-2 ring-indigo-500/80",
+    accent: "indigo",
     description: "The authentic standard hiring bar. Balanced mix of theoretical concepts, live scenario problem-solving, and probing follow-ups.",
-    idealFor: "Simulating authentic technical & behavioral interviews",
   },
   {
     value: "hard",
     label: "Hard Difficulty",
-    subtitle: "High-Pressure Bar-Raiser Simulation",
+    subtitle: "High-pressure bar raiser",
     badge: "Bar Raiser",
-    accentColor: "rose",
-    gradientClass: "from-rose-500/20 via-rose-500/10 to-transparent",
-    borderClass: "hover:border-rose-500/50",
-    activeClass: "border-rose-500 bg-rose-950/40 shadow-[0_0_30px_-5px_rgba(244,63,94,0.3)] ring-2 ring-rose-500/80",
+    accent: "rose",
     description: "Exhaustive challenge featuring edge cases, distributed concurrency, deep algorithmic grilling, and rapid situational pivots.",
-    idealFor: "FAANG, tier-1 tech firms, and high-stakes interviews",
   },
 ];
 
@@ -143,33 +131,33 @@ const TYPE_CARDS = [
   {
     value: "hr",
     label: "HR & Behavioral",
-    subtitle: "Cultural Alignment & Leadership",
+    subtitle: "STAR method & culture",
     icon: Users,
-    badge: "STAR Method",
-    description: "Scenario-based behavioral questions evaluated against leadership principles, conflict management, communication, and culture fit.",
+    badge: "Behavioral",
+    description: "Scenario-based questions evaluated against leadership principles, conflict management, communication, and team alignment.",
   },
   {
     value: "technical",
     label: "Technical Deep-Dive",
-    subtitle: "Domain Rigor & Engineering Logic",
+    subtitle: "Domain rigor & architecture",
     icon: Terminal,
-    badge: "Core Tech",
-    description: "Rigorous assessment of computer science foundations, algorithm logic, system internals, syntax conventions, and code architecture.",
+    badge: "Engineering",
+    description: "Rigorous assessment of computer science foundations, algorithm logic, system internals, syntax conventions, and code design.",
   },
   {
     value: "role_based",
     label: "Role-Based Practical",
-    subtitle: "Daily Job Scenarios & Trade-offs",
+    subtitle: "Daily challenges & trade-offs",
     icon: Briefcase,
     badge: "Practical",
     description: "Realistic day-in-the-life challenges directly tailored to your target job role, balancing practical trade-offs and decision making.",
   },
   {
     value: "company",
-    label: "Target Company Simulation",
-    subtitle: "Company-Specific Culture & Rubric",
+    label: "Company Simulation",
+    subtitle: "Company rubric & values",
     icon: Building2,
-    badge: "Tailored",
+    badge: "Company Style",
     description: "Simulates the exact interview philosophy, question format, core principles, and evaluation criteria of your chosen target company.",
   },
 ];
@@ -178,7 +166,7 @@ const DURATION_CARDS = [
   {
     value: 4,
     label: "4 Questions",
-    subtitle: "Quick Drill (~12-15 minutes)",
+    subtitle: "Quick Drill (~12-15 mins)",
     icon: Zap,
     badge: "Fast Practice",
     description: "Targeted quick session. Ideal when you have limited time or want immediate feedback on specific concepts without fatigue.",
@@ -186,7 +174,7 @@ const DURATION_CARDS = [
   {
     value: 6,
     label: "6 Questions",
-    subtitle: "Standard Mock (~20-25 minutes)",
+    subtitle: "Standard Mock (~20-25 mins)",
     icon: Target,
     badge: "Recommended",
     description: "Full authentic simulation with primary questions, adaptive follow-up probes, and comprehensive ML readiness scoring.",
@@ -194,7 +182,7 @@ const DURATION_CARDS = [
   {
     value: 8,
     label: "8 Questions",
-    subtitle: "Comprehensive (~35-40 minutes)",
+    subtitle: "Comprehensive (~35-40 mins)",
     icon: Award,
     badge: "Exhaustive",
     description: "Deep assessment covering wide technical breadth, architectural trade-offs, and behavioral resilience under extended pressure.",
@@ -205,41 +193,138 @@ const SCREENS = ["role", "company", "resume", "experience", "difficulty", "type"
 
 const STEP_META = {
   role: {
-    badge: "Role Selection",
+    badge: "Role",
     title: "Select Your Target Role",
-    subtitle: "Choose the exact role you're interviewing for so our AI dynamically adapts the question bank.",
+    subtitle: "Pick the role you're preparing for. Hover over any card to view tested competencies.",
   },
   company: {
-    badge: "Company Alignment",
-    title: "Choose a Target Company",
-    subtitle: "Select a specific company to simulate their culture and bar, or practice with general industry standards.",
+    badge: "Company",
+    title: "Choose Target Company",
+    subtitle: "Select a specific company format or general industry practice. Hover for format details.",
   },
   resume: {
-    badge: "Resume Personalization",
-    title: "Personalize with Your Resume",
-    subtitle: "Attach an existing resume or upload a new one to receive questions based on your real career experience.",
+    badge: "Resume",
+    title: "Resume Personalization",
+    subtitle: "Attach a resume for personalized questions, or continue with dynamic role generation.",
   },
   experience: {
-    badge: "Seniority Calibration",
-    title: "Select Your Experience Level",
-    subtitle: "Calibrates the technical complexity, expectation level, and evaluation standard of the mock interview.",
+    badge: "Experience",
+    title: "Select Experience Level",
+    subtitle: "Calibrates question depth and expected seniority standards. Hover for evaluation criteria.",
   },
   difficulty: {
-    badge: "Challenge Level",
-    title: "Choose Interview Difficulty",
+    badge: "Difficulty",
+    title: "Choose Difficulty",
     subtitle: "Controls how aggressively the AI probes your responses and pushes into edge cases.",
   },
   type: {
-    badge: "Interview Style",
-    title: "Choose Interview Type",
-    subtitle: "Select the specific interview format and evaluation framework for this session.",
+    badge: "Interview Type",
+    title: "Choose Interview Format",
+    subtitle: "Select the format and evaluation framework. Hover for focus area breakdown.",
   },
   duration: {
-    badge: "Session Length",
-    title: "Set Interview Question Count",
-    subtitle: "Choose how many questions to practice today. All sessions include instant AI evaluation and ML readiness.",
+    badge: "Length",
+    title: "Question Count",
+    subtitle: "Choose session length. All mock interviews include instant AI feedback and ML readiness.",
   },
 };
+
+/**
+ * Reusable Compact Option Card with Hover Tooltip + Arrow Indicator
+ */
+function CompactOptionCard({
+  icon: Icon,
+  title,
+  subtitle,
+  badge,
+  detail,
+  selected,
+  onClick,
+  accent = "indigo",
+}) {
+  return (
+    <div className="group relative">
+      {/* Floating Hover Tooltip with Speech Arrow */}
+      {detail && (
+        <div className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-2.5 w-64 -translate-x-1/2 opacity-0 scale-95 transition-all duration-150 group-hover:opacity-100 group-hover:scale-100">
+          <div className="relative rounded-xl border border-white/20 bg-[#0c1022]/95 px-3.5 py-2.5 text-xs text-slate-200 shadow-2xl backdrop-blur-xl">
+            <div className="flex items-center gap-1.5 font-bold text-white mb-1">
+              <span>{title}</span>
+              {badge && <span className="text-[10px] text-indigo-300 font-semibold">({badge})</span>}
+            </div>
+            <p className="text-[11px] leading-relaxed text-slate-300">{detail}</p>
+            {/* Tooltip downward pointer arrow */}
+            <div className="absolute top-full left-1/2 -mt-px -translate-x-1/2 border-4 border-transparent border-t-[#0c1022]/95" />
+          </div>
+        </div>
+      )}
+
+      {/* The Compact Interactive Card */}
+      <button
+        type="button"
+        onClick={onClick}
+        className={`w-full flex items-center justify-between gap-3 rounded-xl border px-3.5 py-3 text-left backdrop-blur-md transition-all duration-150 cursor-pointer ${
+          selected
+            ? accent === "emerald"
+              ? "border-emerald-500 bg-emerald-950/40 shadow-[0_0_25px_-5px_rgba(16,185,129,0.35)] ring-2 ring-emerald-500/80"
+              : accent === "rose"
+              ? "border-rose-500 bg-rose-950/40 shadow-[0_0_25px_-5px_rgba(244,63,94,0.35)] ring-2 ring-rose-500/80"
+              : "border-indigo-500 bg-indigo-950/40 shadow-[0_0_25px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
+            : "border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:border-indigo-400/50 hover:shadow-md"
+        }`}
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          {Icon && (
+            <div
+              className={`grid h-9 w-9 flex-shrink-0 place-items-center rounded-lg border transition-colors ${
+                selected
+                  ? accent === "emerald"
+                    ? "border-emerald-400/40 bg-emerald-600 text-white"
+                    : accent === "rose"
+                    ? "border-rose-400/40 bg-rose-600 text-white"
+                    : "border-indigo-400/40 bg-indigo-600 text-white"
+                  : "border-white/10 bg-white/[0.06] text-indigo-300 group-hover:text-white group-hover:border-indigo-400/30"
+              }`}
+            >
+              <Icon className="h-4 w-4" />
+            </div>
+          )}
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="font-display text-sm font-bold text-white truncate group-hover:text-indigo-200 transition-colors">
+                {title}
+              </span>
+              {badge && (
+                <span className="rounded-full border border-white/10 bg-white/[0.06] px-1.5 py-0.2 text-[10px] font-semibold text-slate-300 flex-shrink-0">
+                  {badge}
+                </span>
+              )}
+            </div>
+            {subtitle && (
+              <p className="text-[11px] text-slate-400 truncate">
+                {subtitle}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Right Arrow / Selection Checkmark */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 ml-1">
+          {selected ? (
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-indigo-500 text-white shadow-sm">
+              <Check className="h-3 w-3" strokeWidth={3} />
+            </span>
+          ) : (
+            <div className="flex items-center gap-1 text-[11px] text-slate-500 group-hover:text-indigo-300 transition-colors">
+              <span className="hidden xl:inline text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">Info</span>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </div>
+          )}
+        </div>
+      </button>
+    </div>
+  );
+}
 
 export default function InterviewSetup() {
   const navigate = useNavigate();
@@ -253,12 +338,12 @@ export default function InterviewSetup() {
   const [starting, setStarting] = useState(false);
   const [uploadingResume, setUploadingResume] = useState(false);
 
-  // Role screen search & filter state
+  // Role search & category filter
   const [roleSearch, setRoleSearch] = useState("");
   const [roleCategory, setRoleCategory] = useState("all");
 
   const [config, setConfig] = useState({
-    role_id: 1, // Default to Software Developer
+    role_id: 1, // Default Software Developer
     company_id: null,
     resume_id: null,
     experience_level: "fresher",
@@ -269,7 +354,6 @@ export default function InterviewSetup() {
 
   useEffect(() => {
     catalogService.roles().then((backendRoles) => {
-      // Merge backend roles with rich DEFAULT_ROLES metadata
       const merged = backendRoles.map((br) => {
         const enriched = DEFAULT_ROLES.find((dr) => dr.id === br.id || dr.slug === br.slug);
         return enriched ? { ...enriched, id: br.id, name: br.name, slug: br.slug } : br;
@@ -297,7 +381,7 @@ export default function InterviewSetup() {
     return true;
   }, [screen, config.role_id]);
 
-  // Handle direct resume upload from setup screen
+  // Direct resume upload
   const handleResumeUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -311,7 +395,7 @@ export default function InterviewSetup() {
         setConfig((c) => ({ ...c, resume_id: res.resume.id }));
       }
     } catch (err) {
-      setError(getApiErrorMessage(err, "Failed to upload resume. Make sure it is a valid PDF or DOCX."));
+      setError(getApiErrorMessage(err, "Failed to upload resume. Please choose a PDF or DOCX file."));
     } finally {
       setUploadingResume(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -331,7 +415,7 @@ export default function InterviewSetup() {
     }
   };
 
-  // Filtered roles for Role Selection screen
+  // Filtered roles
   const filteredRoles = useMemo(() => {
     return roles.filter((r) => {
       const matchesSearch =
@@ -354,16 +438,12 @@ export default function InterviewSetup() {
     });
   }, [roles, roleSearch, roleCategory]);
 
-  // Selected names for live breadcrumb
   const selectedRole = roles.find((r) => r.id === config.role_id);
   const selectedCompany = companies.find((c) => c.id === config.company_id);
-  const selectedExp = EXPERIENCE_CARDS.find((e) => e.value === config.experience_level);
-  const selectedDiff = DIFFICULTY_CARDS.find((d) => d.value === config.difficulty);
-  const selectedType = TYPE_CARDS.find((t) => t.value === config.interview_type);
 
   return (
     <div className="relative min-h-screen w-full bg-gradient-to-br from-[#060813] via-[#0d1329] to-[#150f2e] text-slate-100 flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
-      {/* Ambient gradient lights in the background */}
+      {/* Ambient gradient lights */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-indigo-600/15 blur-[120px]" />
         <div className="absolute top-1/4 -right-40 h-[520px] w-[520px] rounded-full bg-violet-600/15 blur-[140px]" />
@@ -371,98 +451,91 @@ export default function InterviewSetup() {
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] opacity-35" />
       </div>
 
-      {/* Main Full-Page Content Container */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 sm:px-8 py-6 sm:py-8">
-        {/* Top Navigation & Status Bar */}
-        <header className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
-          {/* Exit / Return to Dashboard */}
+      {/* Main Container */}
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 sm:px-8 py-5 sm:py-7">
+        {/* Top Minimal Navigation Bar */}
+        <header className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
           <button
             onClick={() => navigate("/dashboard")}
-            className="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:bg-white/10 hover:text-white"
+            className="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:bg-white/10 hover:text-white"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
             <span>Dashboard</span>
           </button>
 
-          {/* Clean Step Counter Pill (Replaces ugly progress bar) */}
-          <div className="flex items-center gap-2.5">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3.5 py-1 text-xs font-bold text-indigo-300 backdrop-blur-md">
-              <Sparkles className="h-3 w-3 text-indigo-400" />
-              Step {screenIdx + 1} of {SCREENS.length} · {stepMeta.badge}
-            </span>
-          </div>
+          {/* Simple Clean Step Pill */}
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3.5 py-1 text-xs font-bold text-indigo-300 backdrop-blur-md">
+            <Sparkles className="h-3 w-3 text-indigo-400" />
+            Step {screenIdx + 1} of {SCREENS.length} · {stepMeta.badge}
+          </span>
 
-          {/* Live Selection Summary */}
-          <div className="hidden sm:flex items-center gap-2 text-xs font-medium text-slate-400">
-            <span className="text-slate-200 font-semibold">{selectedRole?.name || "Select Role"}</span>
-            {selectedCompany && <span>· {selectedCompany.name}</span>}
-            {screenIdx >= 3 && <span>· {selectedExp?.label.split(" ")[0]}</span>}
-            {screenIdx >= 4 && <span>· {selectedDiff?.label.split(" ")[0]}</span>}
+          {/* Current Selection summary */}
+          <div className="hidden sm:flex items-center gap-2 text-xs font-medium text-slate-400 truncate max-w-[280px]">
+            <span className="text-white font-semibold truncate">{selectedRole?.name || "Select Role"}</span>
+            {selectedCompany && <span className="truncate">· {selectedCompany.name}</span>}
           </div>
         </header>
 
         {/* Step Title Header */}
-        <div className="mt-8 mb-6 sm:mt-10 sm:mb-8">
-          <h1 className="font-display text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+        <div className="mt-5 mb-4 sm:mt-7 sm:mb-5">
+          <h1 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
             {stepMeta.title}
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-slate-400 max-w-3xl">
+          <p className="mt-1 text-xs sm:text-sm text-slate-400 max-w-2xl">
             {stepMeta.subtitle}
           </p>
         </div>
 
-        {/* Dynamic Card Screens */}
-        <div className="flex-1 pb-28">
+        {/* Dynamic Compact Selection Cards (Utilizing the whole page, no inner card wrapper) */}
+        <div className="flex-1 pb-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={screen}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
               className="w-full"
             >
               {/* SCREEN 1: ROLES */}
               {screen === "role" && (
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {/* Search and Category Filter Controls */}
-                  <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                    {/* Search Bar */}
-                    <div className="relative flex-1 max-w-md">
-                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                  <div className="flex flex-col sm:flex-row gap-2.5 sm:items-center sm:justify-between">
+                    <div className="relative flex-1 max-w-sm">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
                       <input
                         type="text"
                         value={roleSearch}
                         onChange={(e) => setRoleSearch(e.target.value)}
-                        placeholder="Search roles (e.g. Full Stack, AI Engineer, Product)..."
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.05] pl-10 pr-9 py-2.5 text-sm text-white placeholder-slate-400 backdrop-blur-md focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                        placeholder="Search roles (e.g. Full Stack, AI, Product)..."
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.05] pl-9 pr-8 py-2 text-xs text-white placeholder-slate-400 backdrop-blur-md focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                       />
                       {roleSearch && (
                         <button
                           onClick={() => setRoleSearch("")}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
                         >
-                          <X className="h-4 w-4" />
+                          <X className="h-3.5 w-3.5" />
                         </button>
                       )}
                     </div>
 
-                    {/* Category Filter Pills */}
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1">
                       {[
-                        { id: "all", label: "All Roles" },
+                        { id: "all", label: "All" },
                         { id: "technical", label: "Engineering" },
                         { id: "data", label: "Data & AI" },
-                        { id: "product", label: "Product & Design" },
-                        { id: "business", label: "Business & Ops" },
+                        { id: "product", label: "Product" },
+                        { id: "business", label: "Business" },
                       ].map((cat) => (
                         <button
                           key={cat.id}
                           onClick={() => setRoleCategory(cat.id)}
-                          className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+                          className={`rounded-lg px-2.5 py-1 text-xs font-semibold transition-all ${
                             roleCategory === cat.id
-                              ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                              : "border border-white/10 bg-white/[0.04] text-slate-300 hover:bg-white/10 hover:text-white"
+                              ? "bg-indigo-600 text-white shadow-sm"
+                              : "border border-white/10 bg-white/[0.04] text-slate-300 hover:bg-white/10"
                           }`}
                         >
                           {cat.label}
@@ -471,61 +544,20 @@ export default function InterviewSetup() {
                     </div>
                   </div>
 
-                  {/* Full-Page Role Cards Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {/* Compact Role Cards Grid in a cleanly bounded container */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-[min(52vh,460px)] overflow-y-auto pr-1.5 scrollbar-thin">
                     {filteredRoles.map((r) => {
-                      const isSelected = config.role_id === r.id;
                       const IconComp = ROLE_ICONS[r.icon] || Code;
                       return (
-                        <div
+                        <CompactOptionCard
                           key={r.id}
+                          icon={IconComp}
+                          title={r.name}
+                          subtitle={r.categoryLabel || "Role"}
+                          detail={r.description || "Evaluated against primary domain competencies and real problem solving."}
+                          selected={config.role_id === r.id}
                           onClick={() => setConfig({ ...config, role_id: r.id })}
-                          className={`group relative flex flex-col justify-between rounded-2xl border p-5 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                            isSelected
-                              ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                              : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:shadow-lg hover:-translate-y-0.5"
-                          }`}
-                        >
-                          <div>
-                            <div className="flex items-start justify-between gap-3">
-                              {/* Icon Container */}
-                              <div
-                                className={`grid h-11 w-11 place-items-center rounded-xl border transition-colors ${
-                                  isSelected
-                                    ? "border-indigo-400/40 bg-indigo-600 text-white shadow-md shadow-indigo-600/40"
-                                    : "border-white/10 bg-white/[0.06] text-indigo-300 group-hover:border-indigo-400/30 group-hover:text-indigo-200"
-                                }`}
-                              >
-                                <IconComp className="h-5 w-5" />
-                              </div>
-
-                              {/* Selection Badge / Indicator */}
-                              {isSelected ? (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500 px-2.5 py-0.5 text-[11px] font-bold text-white shadow-sm">
-                                  <Check className="h-3 w-3" strokeWidth={3} />
-                                  Selected
-                                </span>
-                              ) : (
-                                <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-0.5 text-[10px] font-semibold text-slate-400">
-                                  {r.categoryLabel || "Specialist"}
-                                </span>
-                              )}
-                            </div>
-
-                            {/* Role Details */}
-                            <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-indigo-200 transition-colors">
-                              {r.name}
-                            </h3>
-                            <p className="mt-1.5 text-xs leading-relaxed text-slate-300">
-                              {r.description || "Industry benchmark evaluation covering primary domain competencies and problem solving."}
-                            </p>
-                          </div>
-
-                          <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-3 text-[11px] text-slate-400">
-                            <span>Evaluated with AI follow-ups</span>
-                            <ChevronRight className={`h-3.5 w-3.5 transition-transform ${isSelected ? "text-indigo-400 translate-x-0.5" : "text-slate-500 group-hover:translate-x-0.5"}`} />
-                          </div>
-                        </div>
+                        />
                       );
                     })}
                   </div>
@@ -534,87 +566,36 @@ export default function InterviewSetup() {
 
               {/* SCREEN 2: TARGET COMPANY */}
               {screen === "company" && (
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                    {/* General / Neutral Option Card */}
-                    <div
-                      onClick={() => setConfig({ ...config, company_id: null })}
-                      className={`group relative flex flex-col justify-between rounded-2xl border p-6 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                        config.company_id === null
-                          ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                          : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:-translate-y-0.5"
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <div className="grid h-12 w-12 place-items-center rounded-xl border border-indigo-400/30 bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md">
-                            <Globe className="h-6 w-6" />
-                          </div>
-                          {config.company_id === null && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500 px-2.5 py-0.5 text-[11px] font-bold text-white">
-                              <Check className="h-3 w-3" strokeWidth={3} />
-                              Active
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="mt-5 font-display text-lg font-bold text-white">
-                          General Industry Practice
-                        </h3>
-                        <p className="mt-2 text-xs leading-relaxed text-slate-300">
-                          Comprehensive evaluation against standard global hiring benchmarks without company-specific bias.
-                        </p>
-                      </div>
-                      <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.03] p-2.5 text-center text-[11px] font-semibold text-indigo-300">
-                        Recommended for general prep
-                      </div>
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                  {/* General / Neutral Option Card */}
+                  <CompactOptionCard
+                    icon={Globe}
+                    title="General Practice"
+                    subtitle="Industry benchmark"
+                    badge="Recommended"
+                    detail="Evaluates your skills against standard industry hiring bars without company-specific bias."
+                    selected={config.company_id === null}
+                    onClick={() => setConfig({ ...config, company_id: null })}
+                  />
 
-                    {/* Specific Company Cards */}
-                    {companies.map((c) => {
-                      const isSelected = config.company_id === c.id;
-                      return (
-                        <div
-                          key={c.id}
-                          onClick={() => setConfig({ ...config, company_id: isSelected ? null : c.id })}
-                          className={`group relative flex flex-col justify-between rounded-2xl border p-6 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                            isSelected
-                              ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                              : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:-translate-y-0.5"
-                          }`}
-                        >
-                          <div>
-                            <div className="flex items-center justify-between">
-                              <div className="grid h-12 w-12 place-items-center rounded-xl border border-white/15 bg-white/[0.08] text-indigo-300 group-hover:border-indigo-400/40">
-                                <Building2 className="h-6 w-6 text-indigo-400" />
-                              </div>
-                              {isSelected && (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500 px-2.5 py-0.5 text-[11px] font-bold text-white">
-                                  <Check className="h-3 w-3" strokeWidth={3} />
-                                  Selected
-                                </span>
-                              )}
-                            </div>
-                            <h3 className="mt-5 font-display text-lg font-bold text-white">
-                              {c.name}
-                            </h3>
-                            <p className="mt-2 text-xs leading-relaxed text-slate-300">
-                              Simulates authentic interview expectations, cultural principles, and technical pacing known for {c.name}.
-                            </p>
-                          </div>
-                          <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.03] p-2.5 text-center text-[11px] font-semibold text-slate-400">
-                            Simulated Interview Format
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {/* Specific Company Cards */}
+                  {companies.map((c) => (
+                    <CompactOptionCard
+                      key={c.id}
+                      icon={Building2}
+                      title={c.name}
+                      subtitle="Company simulation"
+                      detail={`Simulates the authentic question style, cultural expectations, and technical pacing known for ${c.name}.`}
+                      selected={config.company_id === c.id}
+                      onClick={() => setConfig({ ...config, company_id: config.company_id === c.id ? null : c.id })}
+                    />
+                  ))}
                 </div>
               )}
 
               {/* SCREEN 3: RESUME */}
               {screen === "resume" && (
-                <div className="space-y-6">
-                  {/* Hidden file upload input */}
+                <div className="space-y-4">
                   <input
                     type="file"
                     ref={fileInputRef}
@@ -623,306 +604,129 @@ export default function InterviewSetup() {
                     className="hidden"
                   />
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {/* Card 1: Practice Without Resume */}
-                    <div
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                    {/* Without Resume */}
+                    <CompactOptionCard
+                      icon={Zap}
+                      title="Practice Without Resume"
+                      subtitle="Dynamic AI generation"
+                      badge="Fastest"
+                      detail="Generates balanced questions calibrated strictly to your selected role and seniority level."
+                      selected={config.resume_id === null}
                       onClick={() => setConfig({ ...config, resume_id: null })}
-                      className={`group relative flex flex-col justify-between rounded-2xl border p-6 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                        config.resume_id === null
-                          ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                          : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:-translate-y-0.5"
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <div className="grid h-12 w-12 place-items-center rounded-xl border border-indigo-400/30 bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md">
-                            <Zap className="h-6 w-6" />
-                          </div>
-                          {config.resume_id === null && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500 px-2.5 py-0.5 text-[11px] font-bold text-white">
-                              <Check className="h-3 w-3" strokeWidth={3} />
-                              Active
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="mt-5 font-display text-lg font-bold text-white">
-                          Continue Without Resume
-                        </h3>
-                        <p className="mt-2 text-xs leading-relaxed text-slate-300">
-                          Interview questions will be calibrated dynamically to your chosen role, seniority, and difficulty parameters.
-                        </p>
-                      </div>
-                      <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.03] p-2.5 text-center text-[11px] font-semibold text-indigo-300">
-                        Fastest start · No upload required
-                      </div>
-                    </div>
+                    />
 
-                    {/* Cards for each uploaded resume */}
-                    {resumes.map((r) => {
-                      const isSelected = config.resume_id === r.id;
-                      return (
-                        <div
-                          key={r.id}
-                          onClick={() => setConfig({ ...config, resume_id: isSelected ? null : r.id })}
-                          className={`group relative flex flex-col justify-between rounded-2xl border p-6 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                            isSelected
-                              ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                              : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:-translate-y-0.5"
-                          }`}
-                        >
-                          <div>
-                            <div className="flex items-center justify-between">
-                              <div className="grid h-12 w-12 place-items-center rounded-xl border border-white/15 bg-white/[0.08] text-indigo-400">
-                                <FileText className="h-6 w-6" />
-                              </div>
-                              {isSelected && (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500 px-2.5 py-0.5 text-[11px] font-bold text-white">
-                                  <Check className="h-3 w-3" strokeWidth={3} />
-                                  Attached
-                                </span>
-                              )}
-                            </div>
-                            <h3 className="mt-5 font-display text-base font-bold text-white truncate max-w-[240px]">
-                              {r.original_filename}
-                            </h3>
-                            <p className="mt-2 text-xs text-slate-400">
-                              Uploaded {new Date(r.created_at).toLocaleDateString()}
-                            </p>
-                            <p className="mt-1 text-xs text-slate-300">
-                              Personalizes questions based on your parsed skills, projects, and work history.
-                            </p>
-                          </div>
-                          <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.03] p-2.5 text-center text-[11px] font-semibold text-emerald-300">
-                            Resume Parser Ready
-                          </div>
-                        </div>
-                      );
-                    })}
+                    {/* Uploaded Resumes */}
+                    {resumes.map((r) => (
+                      <CompactOptionCard
+                        key={r.id}
+                        icon={FileText}
+                        title={r.original_filename}
+                        subtitle={`Uploaded ${new Date(r.created_at).toLocaleDateString()}`}
+                        badge="Parsed"
+                        detail="AI personalizes interview questions based on your parsed work experience, tech stack, and projects."
+                        selected={config.resume_id === r.id}
+                        onClick={() => setConfig({ ...config, resume_id: config.resume_id === r.id ? null : r.id })}
+                      />
+                    ))}
 
-                    {/* Card: Upload New Resume */}
-                    <div
+                    {/* Upload New Resume */}
+                    <button
+                      type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="group relative flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/20 bg-white/[0.02] p-8 text-center backdrop-blur-md transition-all hover:border-indigo-400/60 hover:bg-white/[0.05] cursor-pointer"
+                      className="flex items-center justify-between gap-3 rounded-xl border border-dashed border-white/20 bg-white/[0.02] px-3.5 py-3 text-left backdrop-blur-md transition-all hover:border-indigo-400/60 hover:bg-white/[0.06] cursor-pointer"
                     >
-                      <div className="grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-indigo-400 group-hover:scale-110 transition-transform">
-                        {uploadingResume ? <Spinner /> : <UploadCloud className="h-6 w-6" />}
+                      <div className="flex items-center gap-3">
+                        <div className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/[0.06] text-indigo-400">
+                          {uploadingResume ? <Spinner /> : <UploadCloud className="h-4 w-4" />}
+                        </div>
+                        <div>
+                          <span className="font-display text-sm font-bold text-white">
+                            {uploadingResume ? "Uploading..." : "Upload New Resume"}
+                          </span>
+                          <p className="text-[11px] text-slate-400">PDF or DOCX (Max 5MB)</p>
+                        </div>
                       </div>
-                      <h3 className="mt-4 font-display text-base font-bold text-white">
-                        {uploadingResume ? "Uploading & Parsing..." : "Upload New Resume"}
-                      </h3>
-                      <p className="mt-1.5 text-xs text-slate-400 max-w-[200px]">
-                        Supports PDF or DOCX (Max 5MB). Automatically attaches upon upload.
-                      </p>
-                    </div>
+                      <ArrowRight className="h-3.5 w-3.5 text-slate-500" />
+                    </button>
                   </div>
                 </div>
               )}
 
               {/* SCREEN 4: EXPERIENCE LEVEL */}
               {screen === "experience" && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                  {EXPERIENCE_CARDS.map((opt) => {
-                    const isSelected = config.experience_level === opt.value;
-                    const IconComp = opt.icon;
-                    return (
-                      <div
-                        key={opt.value}
-                        onClick={() => setConfig({ ...config, experience_level: opt.value })}
-                        className={`group relative flex flex-col justify-between rounded-2xl border p-6 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                          isSelected
-                            ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                            : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:-translate-y-0.5"
-                        }`}
-                      >
-                        <div>
-                          <div className="flex items-center justify-between">
-                            <div className={`grid h-12 w-12 place-items-center rounded-xl border ${
-                              isSelected
-                                ? "border-indigo-400/40 bg-indigo-600 text-white shadow-md shadow-indigo-600/40"
-                                : "border-white/10 bg-white/[0.06] text-indigo-300"
-                            }`}>
-                              <IconComp className="h-6 w-6" />
-                            </div>
-                            <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-0.5 text-[10px] font-semibold text-slate-400">
-                              {opt.badge}
-                            </span>
-                          </div>
-
-                          <h3 className="mt-5 font-display text-lg font-bold text-white">
-                            {opt.label}
-                          </h3>
-                          <p className="mt-1 text-xs font-semibold text-indigo-400">
-                            {opt.subtitle}
-                          </p>
-                          <p className="mt-2.5 text-xs leading-relaxed text-slate-300">
-                            {opt.description}
-                          </p>
-                        </div>
-
-                        <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-3">
-                          <span className="text-[11px] text-slate-400">Target evaluation standard</span>
-                          {isSelected && <Check className="h-4 w-4 text-indigo-400" strokeWidth={3} />}
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                  {EXPERIENCE_CARDS.map((opt) => (
+                    <CompactOptionCard
+                      key={opt.value}
+                      icon={opt.icon}
+                      title={opt.label}
+                      subtitle={opt.subtitle}
+                      badge={opt.badge}
+                      detail={opt.description}
+                      selected={config.experience_level === opt.value}
+                      onClick={() => setConfig({ ...config, experience_level: opt.value })}
+                    />
+                  ))}
                 </div>
               )}
 
               {/* SCREEN 5: DIFFICULTY */}
               {screen === "difficulty" && (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {DIFFICULTY_CARDS.map((opt) => {
-                    const isSelected = config.difficulty === opt.value;
-                    return (
-                      <div
-                        key={opt.value}
-                        onClick={() => setConfig({ ...config, difficulty: opt.value })}
-                        className={`group relative flex flex-col justify-between rounded-2xl border p-7 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                          isSelected
-                            ? opt.activeClass
-                            : `border-white/10 bg-white/[0.04] hover:bg-white/[0.07] ${opt.borderClass} hover:-translate-y-0.5`
-                        }`}
-                      >
-                        <div>
-                          <div className="flex items-center justify-between">
-                            <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${
-                              isSelected ? "bg-white text-slate-900" : "bg-white/10 text-slate-300"
-                            }`}>
-                              {opt.badge}
-                            </span>
-                            {isSelected && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500 px-2.5 py-0.5 text-[11px] font-bold text-white">
-                                <Check className="h-3 w-3" strokeWidth={3} /> Selected
-                              </span>
-                            )}
-                          </div>
-
-                          <h3 className="mt-5 font-display text-2xl font-extrabold text-white">
-                            {opt.label}
-                          </h3>
-                          <p className="mt-1 text-xs font-semibold text-indigo-300">
-                            {opt.subtitle}
-                          </p>
-                          <p className="mt-3.5 text-xs sm:text-sm leading-relaxed text-slate-300">
-                            {opt.description}
-                          </p>
-                        </div>
-
-                        <div className="mt-8 rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center text-xs text-slate-300">
-                          <span className="font-semibold text-white">Ideal for:</span> {opt.idealFor}
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {DIFFICULTY_CARDS.map((opt) => (
+                    <CompactOptionCard
+                      key={opt.value}
+                      title={opt.label}
+                      subtitle={opt.subtitle}
+                      badge={opt.badge}
+                      accent={opt.accent}
+                      detail={opt.description}
+                      selected={config.difficulty === opt.value}
+                      onClick={() => setConfig({ ...config, difficulty: opt.value })}
+                    />
+                  ))}
                 </div>
               )}
 
               {/* SCREEN 6: INTERVIEW TYPE */}
               {screen === "type" && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                  {TYPE_CARDS.map((opt) => {
-                    const isSelected = config.interview_type === opt.value;
-                    const IconComp = opt.icon;
-                    return (
-                      <div
-                        key={opt.value}
-                        onClick={() => setConfig({ ...config, interview_type: opt.value })}
-                        className={`group relative flex flex-col justify-between rounded-2xl border p-6 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                          isSelected
-                            ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                            : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:-translate-y-0.5"
-                        }`}
-                      >
-                        <div>
-                          <div className="flex items-center justify-between">
-                            <div className={`grid h-12 w-12 place-items-center rounded-xl border ${
-                              isSelected
-                                ? "border-indigo-400/40 bg-indigo-600 text-white shadow-md"
-                                : "border-white/10 bg-white/[0.06] text-indigo-300"
-                            }`}>
-                              <IconComp className="h-6 w-6" />
-                            </div>
-                            <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-0.5 text-[10px] font-semibold text-slate-400">
-                              {opt.badge}
-                            </span>
-                          </div>
-
-                          <h3 className="mt-5 font-display text-lg font-bold text-white">
-                            {opt.label}
-                          </h3>
-                          <p className="mt-1 text-xs font-semibold text-indigo-400">
-                            {opt.subtitle}
-                          </p>
-                          <p className="mt-2.5 text-xs leading-relaxed text-slate-300">
-                            {opt.description}
-                          </p>
-                        </div>
-
-                        <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-3">
-                          <span className="text-[11px] text-slate-400">Rubric aligned</span>
-                          {isSelected && <Check className="h-4 w-4 text-indigo-400" strokeWidth={3} />}
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                  {TYPE_CARDS.map((opt) => (
+                    <CompactOptionCard
+                      key={opt.value}
+                      icon={opt.icon}
+                      title={opt.label}
+                      subtitle={opt.subtitle}
+                      badge={opt.badge}
+                      detail={opt.description}
+                      selected={config.interview_type === opt.value}
+                      onClick={() => setConfig({ ...config, interview_type: opt.value })}
+                    />
+                  ))}
                 </div>
               )}
 
               {/* SCREEN 7: DURATION / QUESTIONS */}
               {screen === "duration" && (
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    {DURATION_CARDS.map((opt) => {
-                      const isSelected = config.planned_questions === opt.value;
-                      const IconComp = opt.icon;
-                      return (
-                        <div
-                          key={opt.value}
-                          onClick={() => setConfig({ ...config, planned_questions: opt.value })}
-                          className={`group relative flex flex-col justify-between rounded-2xl border p-7 backdrop-blur-md transition-all duration-200 cursor-pointer ${
-                            isSelected
-                              ? "border-indigo-500 bg-indigo-950/40 shadow-[0_0_35px_-5px_rgba(99,102,241,0.35)] ring-2 ring-indigo-500/80"
-                              : "border-white/10 bg-white/[0.04] hover:bg-white/[0.07] hover:border-indigo-400/50 hover:-translate-y-0.5"
-                          }`}
-                        >
-                          <div>
-                            <div className="flex items-center justify-between">
-                              <div className={`grid h-12 w-12 place-items-center rounded-xl border ${
-                                isSelected
-                                  ? "border-indigo-400/40 bg-indigo-600 text-white shadow-md shadow-indigo-600/40"
-                                  : "border-white/10 bg-white/[0.06] text-indigo-300"
-                              }`}>
-                                <IconComp className="h-6 w-6" />
-                              </div>
-                              <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-bold ${
-                                isSelected ? "bg-indigo-500 text-white" : "border border-white/10 bg-white/[0.05] text-slate-300"
-                              }`}>
-                                {opt.badge}
-                              </span>
-                            </div>
-
-                            <h3 className="mt-5 font-display text-3xl font-extrabold text-white">
-                              {opt.label}
-                            </h3>
-                            <p className="mt-1 text-xs font-semibold text-indigo-400">
-                              {opt.subtitle}
-                            </p>
-                            <p className="mt-3.5 text-xs sm:text-sm leading-relaxed text-slate-300">
-                              {opt.description}
-                            </p>
-                          </div>
-
-                          <div className="mt-8 rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center text-xs text-slate-300">
-                            Includes live AI feedback + ML readiness report
-                          </div>
-                        </div>
-                      );
-                    })}
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {DURATION_CARDS.map((opt) => (
+                      <CompactOptionCard
+                        key={opt.value}
+                        icon={opt.icon}
+                        title={opt.label}
+                        subtitle={opt.subtitle}
+                        badge={opt.badge}
+                        detail={opt.description}
+                        selected={config.planned_questions === opt.value}
+                        onClick={() => setConfig({ ...config, planned_questions: opt.value })}
+                      />
+                    ))}
                   </div>
 
                   {error && (
-                    <div className="rounded-xl border border-red-500/30 bg-red-950/40 p-4 text-sm text-red-300">
+                    <div className="rounded-xl border border-red-500/30 bg-red-950/40 p-3 text-xs text-red-300">
                       {error}
                     </div>
                   )}
@@ -933,20 +737,19 @@ export default function InterviewSetup() {
         </div>
       </div>
 
-      {/* Floating Bottom Action Navigation Bar */}
-      <footer className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#090d19]/90 px-4 sm:px-8 py-4 backdrop-blur-xl shadow-2xl">
+      {/* Sleek Bottom Action Bar */}
+      <footer className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#080c1a]/95 px-4 sm:px-8 py-3.5 backdrop-blur-xl shadow-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          {/* Back Button */}
           <button
             onClick={goBack}
             disabled={screenIdx === 0}
-            className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all ${
+            className={`flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold transition-all ${
               screenIdx === 0
                 ? "cursor-not-allowed opacity-30 text-slate-500"
                 : "border border-white/10 bg-white/[0.05] text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-3.5 w-3.5" />
             <span>Previous</span>
           </button>
 
@@ -956,20 +759,19 @@ export default function InterviewSetup() {
             <span>·</span>
             <span>{selectedCompany?.name || "General Practice"}</span>
             <span>·</span>
-            <span className="capitalize">{config.difficulty} Difficulty</span>
+            <span className="capitalize">{config.difficulty}</span>
             <span>·</span>
             <span>{config.planned_questions} Questions</span>
           </div>
 
-          {/* Right Action Buttons */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             {["company", "resume"].includes(screen) && (
               <button
                 onClick={goNext}
-                className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-transparent px-4 py-2.5 text-xs font-semibold text-slate-400 hover:bg-white/[0.06] hover:text-white transition-all"
+                className="flex items-center gap-1 rounded-xl border border-white/10 bg-transparent px-3 py-2 text-xs font-semibold text-slate-400 hover:bg-white/[0.06] hover:text-white transition-all"
               >
                 <span>Skip</span>
-                <SkipForward className="h-3.5 w-3.5" />
+                <SkipForward className="h-3 w-3" />
               </button>
             )}
 
@@ -977,17 +779,17 @@ export default function InterviewSetup() {
               <button
                 onClick={startInterview}
                 disabled={starting}
-                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600 px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] hover:shadow-indigo-600/50 disabled:opacity-50"
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] hover:shadow-indigo-600/50 disabled:opacity-50"
               >
                 {starting ? (
                   <>
                     <Spinner />
-                    <span>Preparing Interview Room...</span>
+                    <span>Preparing Interview...</span>
                   </>
                 ) : (
                   <>
-                    <span>Start Mock Interview</span>
-                    <Sparkles className="h-4 w-4" />
+                    <span>Start Interview</span>
+                    <Sparkles className="h-3.5 w-3.5" />
                   </>
                 )}
               </button>
@@ -995,10 +797,10 @@ export default function InterviewSetup() {
               <button
                 onClick={goNext}
                 disabled={!canProceed}
-                className="flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-indigo-600/30 transition-all hover:bg-indigo-500 hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100"
+                className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-indigo-600/30 transition-all hover:bg-indigo-500 hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100"
               >
-                <span>Next Step</span>
-                <ArrowRight className="h-4 w-4" />
+                <span>Next</span>
+                <ArrowRight className="h-3.5 w-3.5" />
               </button>
             )}
           </div>
