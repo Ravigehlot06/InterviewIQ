@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TrendingUp, Sparkles } from "lucide-react";
 
 /**
- * Builds a smooth SVG cubic bezier path from a list of coordinates
+ * Builds a smooth SVG cubic bezier path from a list of coordinates,
+ * with optional Y-clamping to prevent curve overshoot outside the chart grid.
  */
-function buildSmoothPath(points) {
+function buildSmoothPath(points, minY, maxY) {
   if (points.length === 0) return "";
   if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
 
@@ -16,10 +17,16 @@ function buildSmoothPath(points) {
     const p2 = points[i + 1];
     const p3 = points[i + 2] || p2;
 
-    const cp1x = p1.x + (p2.x - p0.x) / 6;
-    const cp1y = p1.y + (p2.y - p0.y) / 6;
-    const cp2x = p2.x - (p3.x - p1.x) / 6;
-    const cp2y = p2.y - (p3.y - p1.y) / 6;
+    let cp1x = p1.x + (p2.x - p0.x) / 6;
+    let cp1y = p1.y + (p2.y - p0.y) / 6;
+    let cp2x = p2.x - (p3.x - p1.x) / 6;
+    let cp2y = p2.y - (p3.y - p1.y) / 6;
+
+    // Clamp bezier control points to chart plotting area
+    if (minY !== undefined && maxY !== undefined) {
+      cp1y = Math.max(minY, Math.min(maxY, cp1y));
+      cp2y = Math.max(minY, Math.min(maxY, cp2y));
+    }
 
     d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
   }
@@ -51,28 +58,34 @@ export default function PerformanceChart({ data = [] }) {
   const chartWidth = width - padLeft - padRight;
   const chartHeight = height - padTop - padBottom;
 
-  const minScore = 40;
+  const minScore = 0;
   const maxScore = 100;
 
-  // Map data to SVG coordinates
+  // Map data to SVG coordinates with strict clamping to prevent overflow
   const points = data.map((d, index) => {
-    const val = Number(d[activeMetric]) || Number(d.overall) || 60;
-    const x = padLeft + (index / Math.max(1, data.length - 1)) * chartWidth;
+    const rawVal = Number(d[activeMetric]) ?? Number(d.overall) ?? 60;
+    const val = Math.max(0, Math.min(100, Math.round(rawVal)));
+    const x =
+      data.length === 1
+        ? padLeft + chartWidth / 2
+        : padLeft + (index / Math.max(1, data.length - 1)) * chartWidth;
     const y = padTop + chartHeight - ((val - minScore) / (maxScore - minScore)) * chartHeight;
-    return { ...d, value: val, x, y, index };
+    const clampedY = Math.max(padTop, Math.min(padTop + chartHeight, y));
+    return { ...d, value: val, x, y: clampedY, index };
   });
 
-  const linePath = buildSmoothPath(points);
-  const areaPath = points.length > 0
-    ? `${linePath} L ${points[points.length - 1].x} ${padTop + chartHeight} L ${points[0].x} ${padTop + chartHeight} Z`
-    : "";
+  const linePath = buildSmoothPath(points, padTop, padTop + chartHeight);
+  const areaPath =
+    points.length > 0
+      ? `${linePath} L ${points[points.length - 1].x} ${padTop + chartHeight} L ${points[0].x} ${padTop + chartHeight} Z`
+      : "";
 
   const latestVal = points.length > 0 ? points[points.length - 1].value : 0;
   const firstVal = points.length > 0 ? points[0].value : 0;
   const delta = latestVal - firstVal;
 
   return (
-    <div className="card-saas relative flex flex-col justify-between p-6">
+    <div className="card-saas relative flex flex-col justify-between p-6 overflow-hidden">
       {/* Top Header & Metric Filters */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -116,10 +129,10 @@ export default function PerformanceChart({ data = [] }) {
       </div>
 
       {/* SVG Line Graph Container */}
-      <div className="relative mt-6 w-full select-none">
+      <div className="relative mt-6 w-full select-none overflow-hidden rounded-xl">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="h-auto w-full overflow-visible"
+          className="h-auto w-full"
         >
           <defs>
             <linearGradient id={`chart-grad-${activeMetric}`} x1="0" y1="0" x2="0" y2="1">
@@ -136,10 +149,21 @@ export default function PerformanceChart({ data = [] }) {
             <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
               <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor={activeConfig.color} floodOpacity="0.3" />
             </filter>
+
+            {/* SVG ClipPath guaranteeing line and area never escape plotting boundaries */}
+            <clipPath id="chartPlotClip">
+              <rect
+                x={padLeft - 2}
+                y={padTop - 4}
+                width={chartWidth + 4}
+                height={chartHeight + 8}
+                rx="4"
+              />
+            </clipPath>
           </defs>
 
           {/* Grid lines */}
-          {[40, 60, 80, 100].map((score) => {
+          {[20, 40, 60, 80, 100].map((score) => {
             const y = padTop + chartHeight - ((score - minScore) / (maxScore - minScore)) * chartHeight;
             return (
               <g key={score}>
@@ -166,16 +190,17 @@ export default function PerformanceChart({ data = [] }) {
             );
           })}
 
-          {/* Gradient Filled Area Under Curve */}
+          {/* Gradient Filled Area Under Curve (clipped) */}
           <motion.path
             d={areaPath}
             fill={`url(#chart-grad-${activeMetric})`}
+            clipPath="url(#chartPlotClip)"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
 
-          {/* Animated Line Drawing from Left to Right */}
+          {/* Animated Line Drawing from Left to Right (clipped) */}
           <motion.path
             key={activeMetric}
             d={linePath}
@@ -185,6 +210,7 @@ export default function PerformanceChart({ data = [] }) {
             strokeLinecap="round"
             strokeLinejoin="round"
             filter="url(#softGlow)"
+            clipPath="url(#chartPlotClip)"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}

@@ -17,11 +17,6 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  MessageSquare,
-  Users,
-  Home,
-  Bell,
-  BarChart3,
   User,
   Sparkles,
   Paperclip,
@@ -439,88 +434,25 @@ export default function InterviewRoom() {
       className="flex h-screen w-screen overflow-hidden bg-[#eef1f6] text-slate-800 font-sans"
     >
       {/* ──────────────────────────────────────────────────────────
-          LEFT SLIM ICON NAVIGATION RAIL
-      ────────────────────────────────────────────────────────── */}
-      <aside className="hidden md:flex w-16 flex-col items-center justify-between border-r border-slate-200/80 bg-white py-5">
-        <div className="flex flex-col items-center gap-6">
-          {/* Logo mark */}
-          <Link
-            to="/dashboard"
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 font-black text-white shadow-sm hover:opacity-90"
-          >
-            IQ
-          </Link>
-
-          {/* Navigation icons */}
-          <nav className="flex flex-col items-center gap-3">
-            <button
-              onClick={() => navigate("/dashboard")}
-              title="Dashboard"
-              className="grid h-10 w-10 place-items-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
-            >
-              <Home className="h-5 w-5" />
-            </button>
-
-            {/* Active video call indicator */}
-            <div className="relative">
-              <span className="absolute -left-3 top-2.5 h-5 w-1 rounded-r-full bg-emerald-500" />
-              <button
-                title="Active Interview"
-                className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-50 text-emerald-600 transition-colors"
-              >
-                <Video className="h-5 w-5" />
-              </button>
-            </div>
-
-            <button
-              title="Notifications"
-              className="grid h-10 w-10 place-items-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
-            >
-              <Bell className="h-5 w-5" />
-            </button>
-
-            <button
-              title="Messages"
-              className="grid h-10 w-10 place-items-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
-            >
-              <MessageSquare className="h-5 w-5" />
-            </button>
-
-            <button
-              title="Participants"
-              className="grid h-10 w-10 place-items-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
-            >
-              <Users className="h-5 w-5" />
-            </button>
-
-            <button
-              title="Analytics"
-              className="grid h-10 w-10 place-items-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
-            >
-              <BarChart3 className="h-5 w-5" />
-            </button>
-          </nav>
-        </div>
-
-        {/* User avatar bottom */}
-        <div className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700">
-          U
-        </div>
-      </aside>
-
-      {/* ──────────────────────────────────────────────────────────
-          MAIN VIEWPORT CONTAINER
+          MAIN VIEWPORT CONTAINER (Full focus interview UI, no sidebar)
       ────────────────────────────────────────────────────────── */}
       <div className="flex flex-1 flex-col overflow-hidden p-3 md:p-5 gap-3 md:gap-4">
         {/* ── TOP HEADER BAR ── */}
         <header className="flex flex-shrink-0 items-center justify-between rounded-2xl bg-white px-5 py-3 shadow-sm border border-slate-200/70">
           {/* Title & tags */}
           <div className="flex min-w-0 items-center gap-3">
+            <Link
+              to="/dashboard"
+              className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-600 font-black text-white text-xs shadow-sm hover:opacity-90 flex-shrink-0"
+              title="Return to Dashboard"
+            >
+              IQ
+            </Link>
             <button
               type="button"
               onClick={() => navigate("/dashboard")}
               aria-label="Back to dashboard"
-              className="grid h-8 w-8 place-items-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors"
+              className="grid h-8 w-8 place-items-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors flex-shrink-0"
             >
               <ArrowLeft className="h-4 w-4" />
             </button>
@@ -698,7 +630,7 @@ export default function InterviewRoom() {
           {/* ════════════════════════════════════════════════════════
               RIGHT COLUMN: QUESTION & ANSWER PANEL
           ════════════════════════════════════════════════════════ */}
-          <aside className="flex w-[380px] lg:w-[420px] flex-shrink-0 flex-col rounded-3xl bg-white p-4 shadow-sm border border-slate-200/80 overflow-hidden">
+          <section className="flex w-[380px] lg:w-[420px] flex-shrink-0 flex-col rounded-3xl bg-white p-4 shadow-sm border border-slate-200/80 overflow-hidden">
             {/* Small Question Bar (Replaced large round progress card) */}
             <div className="mb-2 flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200/80 px-3.5 py-2">
               <div className="flex items-center gap-2">
@@ -896,7 +828,7 @@ export default function InterviewRoom() {
                 </div>
               </div>
             </div>
-          </aside>
+          </section>
         </div>
       </div>
     </div>

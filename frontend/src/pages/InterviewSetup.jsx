@@ -230,6 +230,90 @@ const STEP_META = {
 };
 
 /**
+ * RoleOptionCard
+ * Spacious, rich interactive card for role choosing in practice setup.
+ * No internal scroll: expands smoothly in a responsive grid.
+ * Features hover animations, color shifts, glowing borders, and prominent iconography.
+ */
+function RoleOptionCard({
+  icon: Icon,
+  title,
+  subtitle,
+  categoryLabel,
+  description,
+  selected,
+  onClick,
+}) {
+  return (
+    <motion.button
+      type="button"
+      whileHover={{ y: -4, scale: 1.015 }}
+      whileTap={{ scale: 0.985 }}
+      transition={{ duration: 0.18, ease: "easeOut" }}
+      onClick={onClick}
+      className={`group relative flex flex-col justify-between rounded-2xl border p-5 text-left transition-all duration-200 cursor-pointer min-h-[175px] ${
+        selected
+          ? "border-indigo-500 bg-gradient-to-br from-indigo-950/70 via-[#101738] to-violet-950/60 ring-2 ring-indigo-500/80 shadow-[0_0_35px_-5px_rgba(99,102,241,0.45)]"
+          : "border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] hover:border-indigo-400/70 hover:bg-gradient-to-br hover:from-white/[0.08] hover:via-indigo-950/30 hover:to-violet-950/25 hover:shadow-[0_12px_35px_-8px_rgba(99,102,241,0.35)]"
+      }`}
+    >
+      {/* Top row: Icon + Category Badge + Selected Indicator */}
+      <div className="flex w-full items-start justify-between gap-3">
+        <div
+          className={`grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl border transition-all duration-200 ${
+            selected
+              ? "border-indigo-400/50 bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/30 scale-105"
+              : "border-white/10 bg-white/[0.06] text-indigo-300 group-hover:scale-105 group-hover:border-indigo-400/50 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-md group-hover:shadow-indigo-500/25"
+          }`}
+        >
+          {Icon ? <Icon className="h-6 w-6 transition-transform group-hover:scale-110" /> : <Code className="h-6 w-6" />}
+        </div>
+
+        <div className="flex items-center gap-1.5 flex-wrap justify-end">
+          {categoryLabel && (
+            <span className="rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-0.5 text-[11px] font-semibold text-slate-300 group-hover:text-indigo-200 group-hover:border-indigo-400/30 transition-colors">
+              {categoryLabel}
+            </span>
+          )}
+
+          {selected ? (
+            <span className="flex items-center gap-1 rounded-full bg-indigo-500 px-2.5 py-0.5 text-[11px] font-bold text-white shadow-sm">
+              <Check className="h-3 w-3 stroke-[3]" />
+              <span>Selected</span>
+            </span>
+          ) : (
+            <div className="grid h-6 w-6 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-slate-400 group-hover:border-indigo-400/50 group-hover:text-indigo-300 transition-colors">
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Middle: Title & Description */}
+      <div className="my-3">
+        <h3 className="font-display text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-indigo-200 transition-colors">
+          {title}
+        </h3>
+        <p className="mt-1.5 text-xs text-slate-300/80 leading-relaxed line-clamp-2 group-hover:text-slate-200 transition-colors">
+          {description || subtitle || "Evaluated against primary domain competencies and real problem solving."}
+        </p>
+      </div>
+
+      {/* Bottom Footer Indicator */}
+      <div className="flex items-center justify-between border-t border-white/[0.07] pt-2.5 text-[11px] text-slate-400">
+        <span className="flex items-center gap-1 text-indigo-400/90 group-hover:text-indigo-300 font-medium">
+          <Sparkles className="h-3 w-3 text-indigo-400" />
+          AI Adaptive Probing
+        </span>
+        <span className="font-semibold text-slate-400 group-hover:text-white transition-colors">
+          {selected ? "Active Choice" : "Select Role"}
+        </span>
+      </div>
+    </motion.button>
+  );
+}
+
+/**
  * Reusable Compact Option Card with Hover Tooltip + Arrow Indicator
  */
 function CompactOptionCard({
@@ -544,17 +628,18 @@ export default function InterviewSetup() {
                     </div>
                   </div>
 
-                  {/* Compact Role Cards Grid in a cleanly bounded container */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-[min(52vh,460px)] overflow-y-auto pr-1.5 scrollbar-thin">
+                  {/* Spacious Role Cards Grid (No internal scroll) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                     {filteredRoles.map((r) => {
                       const IconComp = ROLE_ICONS[r.icon] || Code;
                       return (
-                        <CompactOptionCard
+                        <RoleOptionCard
                           key={r.id}
                           icon={IconComp}
                           title={r.name}
                           subtitle={r.categoryLabel || "Role"}
-                          detail={r.description || "Evaluated against primary domain competencies and real problem solving."}
+                          categoryLabel={r.categoryLabel || "Technical"}
+                          description={r.description || "Evaluated against primary domain competencies and real problem solving."}
                           selected={config.role_id === r.id}
                           onClick={() => setConfig({ ...config, role_id: r.id })}
                         />

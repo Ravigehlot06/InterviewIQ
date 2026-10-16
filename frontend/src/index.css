@@ -8,53 +8,67 @@
    ========================================================================== */
 
 @theme {
-  --color-pearl: #efeeec;
-  --color-panel: #f7f6f4;
+  /* Attached Palette: 7 Calibrated Tones */
+  --color-palette-1: #001D39; /* Deep Midnight Navy */
+  --color-palette-2: #0A4174; /* Rich Royal Ocean */
+  --color-palette-3: #49769F; /* Steel Slate */
+  --color-palette-4: #4E8EA2; /* Teal Slate Cyan */
+  --color-palette-5: #6EA2B3; /* Seafoam Slate */
+  --color-palette-6: #7BBDE8; /* Vibrant Sky Electric */
+  --color-palette-7: #BDD8E9; /* Luminous Ice Cloud */
+
+  --color-pearl: #BDD8E9;
+  --color-panel: #f4f8fb;
   --color-card: #ffffff;
-  --color-cream: #fbefe0;
-  --color-line: #e6e3de;
+  --color-cream: #e9f2f8;
+  --color-line: rgba(73, 118, 159, 0.2);
 
-  --color-ink: #16181a;
-  --color-ink-soft: #565b5e;
-  --color-ink-faint: #8f9395;
+  --color-ink: #001D39;
+  --color-ink-soft: #0A4174;
+  --color-ink-faint: #49769F;
 
-  --color-emerald: #0f7a57;
-  --color-emerald-deep: #064e3b;
-  --color-emerald-dark: #06241c;
-  --color-emerald-soft: #dff1ea;
+  --color-emerald: #0A4174;
+  --color-emerald-deep: #001D39;
+  --color-emerald-dark: #001224;
+  --color-emerald-soft: #BDD8E9;
 
-  --color-amber: #f2a03d;
-  --color-peach: #f8cfa6;
-  --color-orange: #ee8420;
-  --color-amber-ink: #a4560c;
+  --color-amber: #4E8EA2;
+  --color-peach: #BDD8E9;
+  --color-orange: #7BBDE8;
+  --color-amber-ink: #001D39;
 
-  --color-success: #0f7a57;
-  --color-success-soft: #dff1ea;
+  --color-success: #0A4174;
+  --color-success-soft: #BDD8E9;
 
   /* Premium Cinematic AI SaaS Tokens */
-  --color-brand-indigo: #4f46e5;
-  --color-brand-violet: #7c3aed;
-  --color-brand-purple: #6366f1;
-  --color-brand-light: #eef2ff;
-  --color-brand-lavender: #f5f3ff;
-  --color-navy-dark: #0f172a;
-  --color-navy-card: #151828;
-  --color-slate-surface: #f8fafc;
+  --color-brand-indigo: #0A4174;
+  --color-brand-violet: #001D39;
+  --color-brand-purple: #49769F;
+  --color-brand-light: #BDD8E9;
+  --color-brand-lavender: #f0f6fa;
+  --color-navy-dark: #001D39;
+  --color-navy-card: #0A4174;
+  --color-slate-surface: #f4f8fb;
 
   --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
 
 body {
+  overflow-x: clip;
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  color: #001D39;
   -webkit-font-smoothing: antialiased;
-  background:
-    radial-gradient(55% 40% at 0% 55%, rgba(247, 190, 120, 0.30), transparent 65%),
-    radial-gradient(40% 30% at 100% 0%, rgba(255, 247, 228, 0.95), transparent 65%),
-    var(--color-pearl);
+  background-color: #BDD8E9;
+  background-image:
+    radial-gradient(65% 55% at 0% 15%, rgba(123, 189, 232, 0.45), transparent 70%),
+    radial-gradient(55% 45% at 100% 30%, rgba(78, 142, 162, 0.35), transparent 70%),
+    radial-gradient(60% 60% at 50% 90%, rgba(10, 65, 116, 0.22), transparent 75%);
   background-attachment: fixed;
 }
 
@@ -64,12 +78,40 @@ h1, h2, h3, h4, .font-display {
   letter-spacing: -0.02em;
 }
 
-::selection { background: var(--color-emerald); color: white; }
+::selection { background: #0A4174; color: white; }
 
 :focus-visible {
-  outline: 2px solid var(--color-emerald);
+  outline: 2px solid #7BBDE8;
   outline-offset: 2px;
   border-radius: 8px;
+}
+
+/* Ambient Floating Background Orbs Keyframe Animations */
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(45px, -35px) scale(1.08); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(-40px, 40px) scale(1.12); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(30px, 30px) scale(0.94); }
+}
+
+.animate-orb-1 {
+  animation: orbFloat1 22s ease-in-out infinite;
+}
+
+.animate-orb-2 {
+  animation: orbFloat2 26s ease-in-out infinite;
+}
+
+.animate-orb-3 {
+  animation: orbFloat3 20s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -112,41 +154,42 @@ h1, h2, h3, h4, .font-display {
   box-shadow: 0 30px 50px -28px rgba(200, 110, 20, 0.55), 0 1px 0 rgba(255,255,255,.4) inset;
 }
 .pill-bar {
-  background: linear-gradient(180deg, #fffaf0, #fbefe0);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(73, 118, 159, 0.25);
   border-radius: 999px;
-  box-shadow: 0 10px 24px -14px rgba(90, 65, 40, 0.35), 0 1px 0 #fff inset;
+  box-shadow: 0 10px 28px -12px rgba(0, 29, 57, 0.12), 0 1px 0 #fff inset;
 }
 .well {
-  background: var(--color-panel);
+  background: rgba(189, 216, 233, 0.35);
   border-radius: 20px;
-  box-shadow: inset 0 2px 6px rgba(90, 65, 40, 0.14), inset 0 0 0 1px rgba(90, 65, 40, 0.06);
+  box-shadow: inset 0 2px 6px rgba(0, 29, 57, 0.08), inset 0 0 0 1px rgba(73, 118, 159, 0.15);
 }
 
 /* ---- Modern SaaS surfaces inspired by reference ---- */
 .card-saas {
   background: #ffffff;
   border-radius: 26px;
-  border: 1px solid rgba(226, 232, 240, 0.75);
-  box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.05), 0 2px 6px -2px rgba(15, 23, 42, 0.02);
+  border: 1px solid rgba(73, 118, 159, 0.2);
+  box-shadow: 0 12px 32px -8px rgba(0, 29, 57, 0.06), 0 2px 6px -2px rgba(0, 29, 57, 0.02);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-saas:hover {
-  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 20px 40px -10px rgba(0, 29, 57, 0.12), 0 4px 10px -2px rgba(0, 29, 57, 0.04);
 }
 
 .card-saas-dark {
-  background: #14172b;
+  background: #001D39;
   border-radius: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 48px -12px rgba(10, 12, 24, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(123, 189, 232, 0.2);
+  box-shadow: 0 24px 48px -12px rgba(0, 29, 57, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   color: #ffffff;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pill-nav-active {
-  background: #16192e;
+  background: #001D39;
   color: #ffffff;
-  box-shadow: 0 4px 12px -2px rgba(22, 25, 46, 0.35);
+  box-shadow: 0 4px 12px -2px rgba(0, 29, 57, 0.35);
 }
 
 /* ---- Interview room: deep emerald, immersive ---- */

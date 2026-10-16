@@ -399,7 +399,7 @@ export default function RoleSelectionLiquid({
       </div>
 
       {/* Role Cards Grid */}
-      <div className="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-3 max-h-[460px] overflow-y-auto px-0.5 py-1 scrollbar-thin">
+      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 px-0.5 py-1">
         {filteredRoles.map((role) => {
           const Icon = ICONS[role.icon] || Code;
           const isSelected = selectedRoleId === role.id;
